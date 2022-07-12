@@ -1,0 +1,190 @@
+	process_command=""
+
+	datafile="CASE200C_P"
+
+	maxstep=601 			# max velocity iterations
+	maxtotstep=601 		# max temperature iterations
+	storage_spacing=6		# write data every ...
+        period=320		# in maxwell time
+        delta_t=0.16		# in maxwell time
+	
+# REQUIRED INFORMATION:
+	
+	box_height=1.0e6	# in meter
+
+	plateage=80				# in Ma
+
+# the next three lines for basin load
+	load_stages=2
+	load_history_file="case19.load"
+	basin_w=1.25
+#	basin_w=0.066666666666666667
+
+	nz_410=46	# z-node index for the base of refined layer
+	z_410=2860e3             # z coord for the base of refined layer in meter
+
+        num_perturbations=1             #  N, Number of perturbations
+        perturbmag=1.0e-4        #  A list of N magnitudes
+        ll=0.625	                #  A list of N wavenumbers (/PI)
+	mm=0.0
+
+	dimenx=0.625		#
+	dimenz=1.0		#
+
+	nodex=65 nodez=33 nodey=1 	#
+	mgunitx=2			# multigrid unit cell
+	mgunitz=3			#
+	levels=5			# and how many times it gets doubled
+	
+	Viscosity=system
+	rheol=3 TDEPV=off		# 1: N=N0*exp(-CT) , 2: N=N0*exp((E+Pz)/(T-T0))
+
+	SDEPV=off
+
+        alpha=1.0
+        YIELD_STRESS=off
+        beta=0.75
+        cohesion=0.0
+        friction_coef=0.7
+	sdepv_misfit=0.0010
+	VISC_UPDATE=on
+
+	num_mat=3
+# 	visc0=1e6,1,1e6		#
+ 	visc0=1e6,1e0,1e0		#
+	shearModulus=1.0,1.0,1.0
+#	viscE=120e3,120e3,120e3
+	viscE=0e3,0e3,0e3
+	viscT=273.0,273.0,273		# 273/(1350)
+
+	ref_strain_rate=3e9,3e9,3e9
+        background_stress=0e5,0e5,0e5,0e5
+	viscZ=0e-6,0e-6,0e-6
+
+
+	sdepv_expt=1.0,1.0,1.0
+
+	VMIN=on visc_min=1.0e0
+	VMAX=on visc_max=1.0e06
+
+	wdensity=0.0
+	density=3330.0
+	core_density=7150.0
+	shearmodulus=5e10
+	refvisc=1.0e21
+	gravacc=10.0
+	ReferenceT=1350.0 
+	thermdiff=1.0e-6
+
+	visc_smooth_cycles=2
+
+#======================================================================
+#    parameters below are rarely used or modified. 
+#======================================================================
+
+#	Ra_670=4.7334375e5		#8.5% density jump
+	Ra_670=0.0	#8.5% density jump
+	clapeyron670=-0.11313131	#-3.5MPa/K
+	transT670=1.0		# 1600 K
+	width670=0.025		# 37.5 km
+
+
+	llmax=50;
+	selx=360;
+
+	
+	aug_lagr=on
+	aug_number=-2.0e3
+
+#	precond=off
+	precond=on
+
+	Problem=convection 		# which built in problem
+	Geometry=cart2d 		# cart2d,cart3d or axi, at the moment 
+#	Geometry=axi 		# cart2d,cart3d or axi, at the moment 
+#	Solver=cgrad 		# conjugate gradient
+	Solver=multigrid 	# multigrid iterative method, store coefficients
+	node_assemble=1
+
+
+# GRID POINTS:
+
+	Spacing=regular			# regular grid
+	orthogonal=off
+
+# DIMENSIONAL INFORMATION (BENCHMARK)
+
+
+	thermexp=2.e-5
+	cp=1250
+	layerd=1500.0 # km
+
+# BOUNDARY CONDITIONS
+	
+	topvbc=0			# velocity boundary conditions top and bottom
+		topvbxval=0.0			
+		topvbyval=0.0		
+	botvbc=0 	
+		botvbxval=0.0
+		botvbyval=0.0	
+
+					#
+	toptbc=1 bottbc=1		# temperature bc's top and bottom
+	toptbcval=0.0 bottbcval=1.0	#
+
+	topcbc=0 botcbc=0		# temperature bc's top and bottom
+	topcbcval=0.0 botcbcval=0.0	#
+
+	periodicx=off 			#
+	periodicy=off			#
+	flowthroughx=off		#
+	flowthroughy=off		#
+
+# Data input and program debugging
+
+	DESCRIBE=off			# 
+	BEGINNER=off			#
+	VERBOSE=off			#
+	verbose=off		#	
+	COMPRESS=off			#
+	see_convergence=1
+
+
+# SOLVER RELATED MATTERS  (HAVE SENSIBLE DEFAULTS & YOU SHOULD BE CAREFUL CHANGING THESE)
+
+	maxsub=1
+	maxsamevisc=0
+
+# Very new version of parameters ....	
+
+	viterations=2
+	mg_cycle=1		# 1 = V cycle, 2 = W cycle, and so on.
+	down_heavy=4		# Increase downward smoothing by this factor.
+	up_heavy=4		# Increase upward smoothing by this factor.
+	vlowstep=40		# Enough to get very  accurate soln at low level.
+	vhighstep=4		# Smoothing passes at highest level (finest grid).
+
+	piterations=375		# Uzawa iteration loops.
+	accuracy=1.0e-4		# Desired accuracy of Uzawa algorithm. 
+	tole_compressibility=5e-8
+
+	depthdominated=off	# sort equations horizontally.
+	eqnzigzag=off		# sort back and forth in direction chosen.
+	eqnviscosity=off
+
+
+# Tuning of energy equation
+
+	adv_sub_iterations=2
+	finetunedt=1.0
+
+
+
+	rayleigh=0e-0	        	# Rayleigh number
+	density_jump=-0.e0	        	# Rayleigh number
+
+	pure_visc=0
+	stokes_flow_only=0
+
+	composition=0	comp_diffusivity=1e-4
+
