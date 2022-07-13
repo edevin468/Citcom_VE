@@ -1,43 +1,17 @@
 --------------------------------------------------------------------------------------
 # CitcomVE Code and Data Processing in Python
 
-#### Contents of this repository:
+### Contents of this repository:
 - CitcomVE code (C) 
 - input files
 - processing codes (Python)
-- figure codes (Python)
+- some figure codes (Python)
 
-### 
+### Current configuration:
+See manuscript for details on viscosity structures, geometry, wavelengths, and periods.  
 
-### Initial set up of directories is as follows:
-Working directory henceforth denoted as `~/`\
-QA processing takes place in `~/gmprocess`\
-GIT takes place in `~/dataset_name`
+#### In the data:
+Each period is denoted by "c" followed by a number between 0 and 32 (e.g. `c01`).  `c01` corresponds to a loading period of 320 \tau_M. 
 
-**gmprocess**:
-```bash
-        ~/gmprocess
-                |
-                +-- event_downloads
-                |  	|
-                |  	+-- conf
-                |  	|	  |
-                |  	|	  +-- config.yml
-                |	+-- data
-                |
-                +-- qa_processing
-                        |
-                        +-- conf
-                        |	  |
-                        |	  +-- config.yml
-                        +-- data
-```
 
-**dataset**:
-```bash
-        ~/dataset_name
-                |
-                +-- event_files
-                |
-                +-- station_data
-                |
+Results will be saved to folders named in the inputfile `datafile` field.  
