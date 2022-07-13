@@ -7,6 +7,9 @@
 - processing codes (Python)
 - some figure codes (Python)
 
+### Running Citcom
+See Shijie's tutorial (is included in this respository). 
+
 ### Current configuration:
 See manuscript for details on viscosity structures, geometry, wavelengths, and periods.  
 
@@ -26,3 +29,14 @@ Results are saved to folders named in the inputfile `datafile` field.
 `period.time`: contains total dissipation for the box at each timestep for a given period. Columns are: 'Timestep','Time', 'Total Dissipation','Total Elastic','Total Elastic+Dissipation','Total Work', 'Dissipation', 'Elastic Energy','Work'
 
 `period.topo_s_timestep.dat`: contains topography for the surface of the box for each timesetp for a given period. Columns are: 'x','z','zprime','na','na'.  
+
+
+### Data processing 
+Code is mostly fairly well documented, and should be fairly self explanatory, but please email me if you have questions! 
+
+### General notes that might be useful
+
+- If you need to change the number of timesteps, the delta_t field in the input files doesn't do anything, you have to instead change this in the Citcom.c file.  The current numbers of timesteps is pretty stable though, so I wouldn't change it unless you need to. 
+- Most of the weird/annoying parts of my Python codes are because the number of timesteps changes for each period, and sometimes between wavelengths. If the scripts aren't finding files for a given case this is usually the problem. 
+-   
+-
