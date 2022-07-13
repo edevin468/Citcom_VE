@@ -34,9 +34,11 @@ Results are saved to folders named in the inputfile `datafile` field.
 ### Data processing 
 Code is mostly fairly well documented, and should be fairly self explanatory, but please email me if you have questions! 
 
+### Figures
+I included the code that makes the figures in our paper for examples. 
+
 ### General notes that might be useful
 
 - If you need to change the number of timesteps, the delta_t field in the input files doesn't do anything, you have to instead change this in the Citcom.c file.  The current numbers of timesteps is pretty stable though, so I wouldn't change it unless you need to. 
 - Most of the weird/annoying parts of my Python codes are because the number of timesteps changes for each period, and sometimes between wavelengths. If the scripts aren't finding files for a given case this is usually the problem. 
--   
--
+
